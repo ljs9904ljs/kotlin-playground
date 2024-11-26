@@ -1,34 +1,6 @@
 import java.util.*
 
-/*
-성적처리 시스템 구현하기
-• 구현 내용
 
-○ 성적처리 시스템을 만들어주세요.
-
-• 시스템 요구사항
-
-○ 학생의 이름과 과목들의 점수를 입력/삭제 할 수 있어야합니다.
-○ 과목은 국어, 수학, 영어 총 3개입니다.
-○ 총점 기준으로 내림차순 정렬하여 조회할 수 있어야합니다.
-○ 총점이 같은 경우, 국어, 수학, 영어 점수를 기준으로 내림차순 정렬해야합니다.
-○ 모두 동일한 경우 이름을 기준으로 오름차순 정렬해야합니다.
-
-• 테스트
-
-○ 위 시스템에 대한 테스트 코드를 작성해주세요.
-
-<조회 예시>
-이름 국어 수학 영어
-
-alice 100 100 100
-james 87 79 99
-alex 87 65 100
-michael 87 65 100
-sophia 33 100 80
-
-
-*/
 class Grade(
     val name: String,
     val korean: Int,
@@ -155,8 +127,11 @@ class TestGradeProcessor() {
 
     fun test() {
         val tests = mutableListOf<() -> Unit>()
-        tests.add(::testAddGrade)
-        tests.add(::testRemoveGradeByNameExistingGrade)
+
+        // 참고, this를 생략할 수 있다. 
+        // 클래스 멤버에 접근하는 방식이라고 이해하면 cpp이랑 똑같다고 생각할 수 있겠다.
+        tests.add(this::testAddGrade)
+        tests.add(this::testRemoveGradeByNameExistingGrade)
         tests.add(::testRemoveGradeByNameNotExistingGrade)
         tests.add(::testOrder)
 
@@ -165,8 +140,8 @@ class TestGradeProcessor() {
 }
 
 
-
 fun main(args: Array<String>) {
     TestGrade().test()
     TestGradeProcessor().test()
+    println("Good~")
 }
